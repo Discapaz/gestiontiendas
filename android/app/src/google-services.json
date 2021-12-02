@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1058063609743",
+    "project_id": "bdgestiontiendas",
+    "storage_bucket": "bdgestiontiendas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058063609743:android:03bc29e817dac610f465fa",
+        "android_client_info": {
+          "package_name": "com.gestionTiendas.gestiontiendas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058063609743-8vqqo78qfh29m8pu3ogdt356jb44tap0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7AscL81rDF5-JxQH_GY0bVF7CoeiNgs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058063609743-8vqqo78qfh29m8pu3ogdt356jb44tap0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
