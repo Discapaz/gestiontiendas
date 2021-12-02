@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gestiontiendas/pantallas/pantalla_3.dart';
+import 'listarPersonas.dart';
 import 'main.dart';
 
 
@@ -15,6 +17,8 @@ class pantalla_2 extends StatefulWidget {
 
 class _pantalla_2State extends State<pantalla_2> {
   List datos_tiendas = [];
+
+  get floatingActionButton => null;
   void initState() {
     super.initState();
     getTiendas();
@@ -25,7 +29,6 @@ class _pantalla_2State extends State<pantalla_2> {
     if(tiendas.docs.length > 0) { //Trae datos
       print("Trae datos");
       for(var doc in tiendas.docs) {
-        print(doc.data());
         setState(() {
           datos_tiendas.add(doc.data());
         });
@@ -39,28 +42,55 @@ class _pantalla_2State extends State<pantalla_2> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      drawer: menu(),
       appBar: AppBar(
-        title: Text("Listado"),
+        title: Image.network("https://img.freepik.com/vector-gratis/personas-pie-cola-tienda_23-2148594615.jpg?size=626&ext=jpg", height: 90, width: 60),
       ),
-      body: Center(
-        child: ListView.builder(
+      body: Column(
+        children: <Widget>[
+          Padding(padding: const EdgeInsets.all(12.0),
+          child: Text(
+            "Conoce nuestras tiendas",
+            style: TextStyle(
+              color: Colors.grey,
+              fontWeight: FontWeight.w600,
+              fontSize: 20.0,
+            ),
+          ),
+        ),
+          Container(
+          height: 50.0,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              Padding(
+              padding: const EdgeInsets.all(90.0),
+              child: Container(
+                width:200.0 ,
+                height: 150.0,
+                color: Colors.yellow,
+              ),
+              ),
+          ListView.builder(
           itemCount: datos_tiendas.length,
           itemBuilder: (BuildContext context,i) {
-            return ListTile(
-              title: Text("Negocio:  " + i.toString()+" - "+datos_tiendas[i]['Categoria'].toString()),
-            );
+          return ListTile(
+            title: Text("Negocio:  " + i.toString()+" - "+datos_tiendas[i]['Categoria'].toString()),
+          );
           },
-        ),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-          onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => pantalla_3()));
-          }, label: Text("Siguiente"),
-          icon: Icon(Icons.arrow_forward)
-      ),
-      // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
+    ),
+  ],
+    ),
+    ),
+          Container(
+          child: ElevatedButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla_3()));
+          },child: Text('Siguiente'),),
 
+),
+],
+),
+);
+}
+}
 
