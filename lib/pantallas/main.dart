@@ -2,9 +2,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gestiontiendas/pantallas/pantalla_2.dart';
+import 'package:gestiontiendas/pantallas/pantalla_3.dart';
+import 'package:gestiontiendas/pantallas/pantalla_4.dart';
 import 'package:gestiontiendas/widgets/Circle.dart';
 import 'package:gestiontiendas/widgets/input_text.dart';
-
+import 'crud.dart';
 import 'formulario.dart';
 
 
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -59,8 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Circle(
                       radius: size.width * 0.45,
                       colors: [
-                        Colors.purple,
-                        Colors.deepPurpleAccent
+                        Colors.lightBlueAccent,
+                        Colors.blueAccent
                       ],
                       key: null,)
                 ),
@@ -150,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         onPressed: () {},
                                         child: Text("Sing up", style: TextStyle(
                                             fontSize: 20,
-                                            color: Colors.deepPurple)),
+                                            color: Colors.blue)),
                                       )
                                     ],
                                   ),
@@ -178,40 +180,53 @@ class menu extends StatelessWidget {
           children: [
             DrawerHeader(
                 decoration: BoxDecoration(
-                    color: Colors.amberAccent
+                    color: Colors.black87
                 ),
-                child: Image.network('https://www.lifeder.com/wp-content/uploads/2018/06/mercado-negocios-empresas-630x420.jpg')
+                child: Image.network('https://i.pinimg.com/474x/f5/bd/cb/f5bdcb14bb2affdc58660f43281daadd.jpg', height: 600,)
             ),
             Column(
                 children: [
                   ListTile(
-                    leading: Icon(Icons.account_circle_outlined, size: 30, color: Colors.green),
-                    title: Text("Consultar Personas"),
+                    leading: Icon(Icons.account_circle_outlined, size: 60, color: Colors.blueAccent),
+                    title: Text("Perfil"),
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>pantalla_2()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>crud()));
                     },
                   ),
                   ListTile(
-                    trailing: Icon(Icons.account_box,size: 30, color: Colors.green),
+                    trailing: Icon(Icons.login_outlined,size: 50, color: Colors.blueAccent),
+                    title: Text("Inicio"),
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla_2()));
+                    },
+                  ),
+                  ListTile(
+                    trailing: Icon(Icons.travel_explore_outlined,size: 50, color: Colors.blueAccent),
+                    title: Text("Consultar"),
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla_3()));
+                    },
+                  ),
+                  ListTile(
+                    trailing: Icon(Icons.face_outlined,size: 50, color: Colors.blueAccent),
                     title: Text("Registrar Cliente"),
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=> formulario()));
                     },
                   ),
                   ListTile(
-                    trailing: Icon(Icons.account_box,size: 30, color: Colors.green),
+                    trailing: Icon(Icons.shopping_bag_outlined,size: 50, color: Colors.blueAccent),
                     enabled: true,
-                    title: Text("Actualizar Datos"),
+                    title: Text("Registrar Pedido"),
                     onTap: (){
                       //Navigator.push(context, MaterialPageRoute(builder: (context)=>));
                     },
                   ),
                   ListTile(
-                    trailing: Icon(Icons.account_box,size: 30, color: Colors.green),
-                    enabled: true,
-                    title: Text("Registrar Pedido"),
+                    trailing: Icon(Icons.public_outlined,size: 50, color: Colors.blueAccent),
+                    title: Text("Mapa"),
                     onTap: (){
-                      //Navigator.push(context, MaterialPageRoute(builder: (context)=>));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> formulario()));
                     },
                   )
                 ]
@@ -221,3 +236,4 @@ class menu extends StatelessWidget {
     );
   }
 }
+

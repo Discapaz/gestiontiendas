@@ -1,18 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:gestiontiendas/pantallas/pantalla_3.dart';
 import 'main.dart';
 
-class pantalla_2 extends StatefulWidget {
-  const pantalla_2({Key? key}) : super(key: key);
+class registrarPedido extends StatefulWidget {
+  const registrarPedido({Key? key}) : super(key: key);
 
   @override
-  _pantalla_2State createState() => _pantalla_2State();
+  _registrarPedidoState createState() => _registrarPedidoState();
 }
 
-class _pantalla_2State extends State<pantalla_2> {
-  List datos_tiendas = [];
+class _registrarPedidoState extends State<registrarPedido> {
+  List datos_productos = [];
 
   get floatingActionButton => null;
 
@@ -24,15 +23,15 @@ class _pantalla_2State extends State<pantalla_2> {
   void getTiendas() async {
     print("dentro getTiendas");
     CollectionReference datos = FirebaseFirestore.instance
-        .collection("Tiendas"); //Conexión a la colección
-    QuerySnapshot tiendas = await datos.get(); //Traer todas las tiendas
-    if (tiendas.docs.length > 0) {
+        .collection("Productos"); //Conexión a la colección
+    QuerySnapshot productos = await datos.get(); //Traer todas las tiendas
+    if (productos.docs.length > 0) {
       //Trae datos
       print("Trae datos en consola");
-      for (var doc in tiendas.docs) {
+      for (var doc in productos.docs) {
         print(doc.data());
         setState(() {
-          datos_tiendas.add(doc.data());
+          datos_productos.add(doc.data());
         });
       }
     } else {
@@ -46,33 +45,31 @@ class _pantalla_2State extends State<pantalla_2> {
         drawer: menu(),
         appBar: AppBar(
           title: Image.network("https://img.freepik.com/vector-gratis/personas-pie-cola-tienda_23-2148594615.jpg?size=626&ext=jpg", height: 90, width: 60),
-            ),
+        ),
         body: Center(
           child: ListView.builder(
-              itemCount: datos_tiendas.length,
+              itemCount: datos_productos.length,
               itemBuilder: (BuildContext context, j) {
                 return ListTile(
                   //padding: EdgeInsets.all(27),
                     onTap: () {
                       print('dentro de onTap pantalla1');
-                      print(datos_tiendas[j]); // Print datos card * en consola
-                      datosNegocio d = datosNegocio(
-                          datos_tiendas[j]['Nombre'],
-                          datos_tiendas[j]['Telefono'],
-                          datos_tiendas[j]['Direccion'],
-                          datos_tiendas[j]['Logo'],
-                          datos_tiendas[j]['PaginaWeb'],
-                          datos_tiendas[j]['Foto']);
+                      print(datos_productos[j]); // Print datos card * en consola
+                      datosProductos dp = datosProductos(
+                          datos_productos[j]['Descripcion'],
+                          datos_productos[j]['Imagen'],
+                          datos_productos[j]['Precio'],
+                      );
 
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>pantalla_3()));
+                      //Navigator.push(context, MaterialPageRoute(builder: (context)=>carritoCompra(pedido: pedido, cedula: cedula, id: id)));
                     },
                     title: miCardImage(
-                        url: datos_tiendas[j]['Foto'],
-                        texto: datos_tiendas[j]['Nombre'] +
+                        url: datos_productos[j]['Imagen'],
+                        texto: datos_productos[j]['Descripcion'] +
                             "\n ✆ :  " +
-                            datos_tiendas[j]['Telefono'].toString() +
-                            '\n ➤ :  ' +
-                            datos_tiendas[j]['Direccion']));
+                            datos_productos[j]['Precio']
+                            )
+                );
               }),
           /*
     floatingActionButton: FloatingActionButton.extended(
@@ -120,20 +117,16 @@ class miCardImage extends StatelessWidget {
   }
 }
 
-class datosNegocio {
-  String Nombre = "";
-  String Telefono = "";
-  String Direccion = "";
-  String Logo = "";
-  String PaginaWeb = "";
-  String Foto = "";
+class datosProductos {
+  String Descripcion = "";
+  String Imagen = "";
+  String Precio = "";
 
-  datosNegocio(Nombre, Telefono, Direccion, Logo, PaginaWeb, Foto) {
-    this.Nombre = Nombre;
-    this.Telefono = Telefono;
-    this.Direccion = Direccion;
-    this.Logo = Logo;
-    this.PaginaWeb = PaginaWeb;
-    this.Foto = Foto;
+
+
+  datosProductos(Descripcion, Imagen, Precio) {
+    this.Descripcion= Descripcion;
+    this.Imagen= Imagen;
+    this.Precio= Precio;
   }
 }

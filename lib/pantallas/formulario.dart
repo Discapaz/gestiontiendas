@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gestiontiendas/widgets/Circle.dart';
 import 'package:gestiontiendas/widgets/input_text.dart';
-
 import 'main.dart';
 
 class formulario extends StatefulWidget {
@@ -20,6 +20,9 @@ class _fromularioState extends State<formulario> {
   final direccion=TextEditingController();
   final telefono=TextEditingController();
   final celular=TextEditingController();
+  void limpiar(){
+    cedula.text=""; nombre.text=""; direccion.text=""; telefono.text=""; celular.text="";
+  }
 
 CollectionReference clientes=FirebaseFirestore.instance.collection('Clientes');
   @override
@@ -27,34 +30,25 @@ CollectionReference clientes=FirebaseFirestore.instance.collection('Clientes');
     final size = MediaQuery
         .of(context)
         .size;
-    return Scaffold(body: Container(
+    return Scaffold(
+      drawer: menu(),
+      appBar: AppBar(
+        title:Image.network("https://img.freepik.com/vector-gratis/personas-pie-cola-tienda_23-2148594615.jpg?size=626&ext=jpg", height: 90, width: 60),
+        actions: const <Widget>[
+          InkWell(
+            child: Padding(
+              padding:
+              EdgeInsets.symmetric(horizontal: 16.0),
+              child:Icon(Icons.search),
+            ),
+          ),
+        ],
+      ),
+      body: Container(
         width: size.width,
         height: size.height,
         child: Stack(
             children: <Widget>[
-              Positioned(
-                  right: -size.width * 0.18,
-                  top: -size.width * 0.36,
-                  child: Circle(
-                    radius: size.width * 0.45,
-                    colors: [
-                      Colors.purple,
-                      Colors.deepPurpleAccent
-                    ],
-                    key: null,)
-              ),
-
-              Positioned(
-                  left: -size.width * 0.15,
-                  top: -size.width * 0.34,
-                  child: Circle(
-                    radius: size.width * 0.35,
-                    colors: [
-                      Colors.orange,
-                      Colors.yellow
-                    ],
-                    key: null,)
-              ),
 
               SingleChildScrollView(
                 child: SafeArea(
@@ -65,8 +59,8 @@ CollectionReference clientes=FirebaseFirestore.instance.collection('Clientes');
                         children: <Widget>[
                           Container(
                             width: 90,
-                            height: 100,
-                            margin: EdgeInsets.only(top: size.width * 0.3),
+                            height: 90,
+                            margin: EdgeInsets.only(top: size.width * 0.2),
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(16),
@@ -78,7 +72,7 @@ CollectionReference clientes=FirebaseFirestore.instance.collection('Clientes');
 
                             ),
                           ),
-                          SizedBox(height: 25),
+                          SizedBox(height: 20),
                           Text(
                             "Registro Cliente", textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 20,
@@ -126,7 +120,7 @@ CollectionReference clientes=FirebaseFirestore.instance.collection('Clientes');
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 60),
+                                SizedBox(height: 25),
                                 ConstrainedBox(constraints: BoxConstraints(
                                   maxWidth: 200,
                                   minWidth: 200,
@@ -140,6 +134,7 @@ CollectionReference clientes=FirebaseFirestore.instance.collection('Clientes');
                                         onPressed: () {
                                           if (cedula.text.isEmpty ||nombre.text.isEmpty || direccion.text.isEmpty || telefono.text.isEmpty || celular.text.isEmpty) {
                                             print("Campos vacios");
+                                            Fluttertoast.showToast(msg: "Campos Vacios", toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.BOTTOM);
                                           } else {
                                           clientes.doc(cedula.text).set({
                                           "nombre": nombre.text,

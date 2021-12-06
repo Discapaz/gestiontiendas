@@ -1,17 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gestiontiendas/pantallas/formulario.dart';
 import 'package:gestiontiendas/pantallas/pantalla_4.dart';
+import 'package:gestiontiendas/pantallas/registrarPedido.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class pantalla_5 extends StatelessWidget {
   final datosTienda tienda;
+  
   const pantalla_5({required this.tienda});
 
-  @override
+@override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Datos detallados: " + tienda.Nombre),
+        title: Image.network("https://img.freepik.com/vector-gratis/personas-pie-cola-tienda_23-2148594615.jpg?size=626&ext=jpg", height: 90, width: 60),
       ),
       body: ListView(
         children: [
@@ -44,9 +47,9 @@ class pantalla_5 extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => formulario()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => registrarPedido()));
                   },
-                  child: Text("Registrar Cliente", ),
+                  child: Text("Productos"),
                 ),
               )
             ],
