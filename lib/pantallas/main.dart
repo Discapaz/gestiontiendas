@@ -1,9 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gestiontiendas/pantallas/moduloPedido.dart';
 import 'package:gestiontiendas/pantallas/pantalla_2.dart';
 import 'package:gestiontiendas/pantallas/pantalla_3.dart';
 import 'package:gestiontiendas/pantallas/pantalla_4.dart';
+import 'package:gestiontiendas/pantallas/registrarPedido.dart';
 import 'package:gestiontiendas/widgets/Circle.dart';
 import 'package:gestiontiendas/widgets/input_text.dart';
 import 'crud.dart';
@@ -116,9 +118,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                     child: Column(
                                       children: <Widget>[
-                                        InputText(label: "Usuario", controller: usuario),
+                                        //InputText(label: "Usuario", controller: usuario),
+                                        TextField( controller: usuario,),
                                         SizedBox(height: 30),
-                                        InputText(label: "Contraseña", controller: contrasena,)
+                                        //InputText(label: "Contraseña", controller: contrasena,)
+                                        TextField( controller: contrasena,)
                                       ],
                                     ),
                                   ),
@@ -134,10 +138,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                           borderRadius: BorderRadius.circular(
                                               6),
                                           onPressed: () {
+                                            print('Impresion de contraseña');
+                                            print(contrasena.text);
+                                            print('Impresion de usuario');
+                                            print(usuario.text );
                                             Navigator.push(context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        pantalla_2()));
+                                                        pantalla_2(cedula: contrasena.text)));
                                           },
                                           child: Text("Sing in",
                                             style: TextStyle(fontSize: 20),
@@ -197,7 +205,7 @@ class menu extends StatelessWidget {
                     trailing: Icon(Icons.login_outlined,size: 50, color: Colors.blueAccent),
                     title: Text("Inicio"),
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla_2()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> pantalla_2(cedula: '',)));
                     },
                   ),
                   ListTile(
@@ -219,7 +227,7 @@ class menu extends StatelessWidget {
                     enabled: true,
                     title: Text("Registrar Pedido"),
                     onTap: (){
-                      //Navigator.push(context, MaterialPageRoute(builder: (context)=>));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>moduloPedido()));
                     },
                   ),
                   ListTile(

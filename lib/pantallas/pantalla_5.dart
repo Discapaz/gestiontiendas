@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gestiontiendas/pantallas/formulario.dart';
 import 'package:gestiontiendas/pantallas/pantalla_4.dart';
 import 'package:gestiontiendas/pantallas/registrarPedido.dart';
+import 'package:gestiontiendas/pantallas/registrarPedidos.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class pantalla_5 extends StatelessWidget {
@@ -14,7 +15,7 @@ class pantalla_5 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.network("https://img.freepik.com/vector-gratis/personas-pie-cola-tienda_23-2148594615.jpg?size=626&ext=jpg", height: 90, width: 60),
+        title:Text('Hola test') //Image.network("https://img.freepik.com/vector-gratis/personas-pie-cola-tienda_23-2148594615.jpg?size=626&ext=jpg", height: 90, width: 60),
       ),
       body: ListView(
         children: [
@@ -47,7 +48,7 @@ class pantalla_5 extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => registrarPedido()));
+                    //Navigator.push(context, MaterialPageRoute(builder: (context) => registrarPedidos(id: id, cedula: cedula)));
                   },
                   child: Text("Productos"),
                 ),

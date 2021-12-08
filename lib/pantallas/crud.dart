@@ -32,13 +32,13 @@ class _crudState extends State<crud> {
               padding: EdgeInsets.only(left: 20.0, right: 20.0, top:20.0),
               child: TextField(
                 controller: cedula,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
-                    fillColor: Colors.lightBlue,
+                    fillColor: Colors.white,
                     filled: true,
-                    icon: Icon(Icons.assignment_rounded,size: 25),
+                    icon: Icon(Icons.pin_outlined,size: 25),
                     hintText: "Digite numero de cedula",
-                    hintStyle: TextStyle(color: Colors.black12)
+                    hintStyle: TextStyle(color: Colors.black38)
 
                 ),
               )
@@ -47,13 +47,13 @@ class _crudState extends State<crud> {
               padding: EdgeInsets.all(20.0),
               child: TextField(
                 controller: celular,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
-                    fillColor: Colors.lightBlue,
+                    fillColor: Colors.white,
                     filled: true,
-                    icon: Icon(Icons.assignment_rounded,size: 25),
+                    icon: Icon(Icons.call_outlined,size: 25),
                     hintText: "Digite numero de celular",
-                    hintStyle: TextStyle(color: Colors.black12)
+                    hintStyle: TextStyle(color: Colors.black38)
 
                 ),
               )
@@ -62,13 +62,13 @@ class _crudState extends State<crud> {
               padding: EdgeInsets.all(20.0),
               child: TextField(
                 controller: direccion,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
-                    fillColor: Colors.lightBlue,
+                    fillColor: Colors.white,
                     filled: true,
                     icon: Icon(Icons.assignment_rounded,size: 25),
                     hintText: "Digite direccion",
-                    hintStyle: TextStyle(color: Colors.black12)
+                    hintStyle: TextStyle(color: Colors.black38)
 
                 ),
               )
@@ -77,13 +77,13 @@ class _crudState extends State<crud> {
               padding: EdgeInsets.all(20.0),
               child: TextField(
                 controller: nombre,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
-                    fillColor: Colors.lightBlue,
+                    fillColor: Colors.white,
                     filled: true,
-                    icon: Icon(Icons.assignment_rounded,size: 25),
+                    icon: Icon(Icons.badge_outlined,size: 25),
                     hintText: "Digite nombre",
-                    hintStyle: TextStyle(color: Colors.black12)
+                    hintStyle: TextStyle(color: Colors.black38)
                 ),
               )
           ),
@@ -91,13 +91,13 @@ class _crudState extends State<crud> {
               padding: EdgeInsets.all(20.0),
               child: TextField(
                 controller: telefono,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
-                    fillColor: Colors.lightBlue,
+                    fillColor: Colors.white,
                     filled: true,
-                    icon: Icon(Icons.assignment_rounded,size: 25),
+                    icon: Icon(Icons.call_outlined,size: 25),
                     hintText: "Digite telefono",
-                    hintStyle: TextStyle(color: Colors.black12)
+                    hintStyle: TextStyle(color: Colors.black38)
                 ),
               )
           ),

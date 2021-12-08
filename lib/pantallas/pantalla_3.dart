@@ -113,6 +113,8 @@ class _pantalla_3State extends State<pantalla_3> {
                     borderRadius: BorderRadius.circular(
                     6),
                     onPressed: () {
+                      print('datos');
+                      print(dato.text);
                     Navigator.push(context,
                     MaterialPageRoute(
                     builder: (context) =>

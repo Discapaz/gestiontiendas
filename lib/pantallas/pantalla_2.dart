@@ -5,7 +5,8 @@ import 'package:gestiontiendas/pantallas/pantalla_3.dart';
 import 'main.dart';
 
 class pantalla_2 extends StatefulWidget {
-  const pantalla_2({Key? key}) : super(key: key);
+  final String cedula;
+  const pantalla_2({required this.cedula});
 
   @override
   _pantalla_2State createState() => _pantalla_2State();
@@ -48,6 +49,7 @@ class _pantalla_2State extends State<pantalla_2> {
           title: Image.network("https://img.freepik.com/vector-gratis/personas-pie-cola-tienda_23-2148594615.jpg?size=626&ext=jpg", height: 90, width: 60),
             ),
         body: Center(
+
           child: ListView.builder(
               itemCount: datos_tiendas.length,
               itemBuilder: (BuildContext context, j) {
@@ -55,6 +57,7 @@ class _pantalla_2State extends State<pantalla_2> {
                   //padding: EdgeInsets.all(27),
                     onTap: () {
                       print('dentro de onTap pantalla1');
+                      print(widget.cedula);
                       print(datos_tiendas[j]); // Print datos card * en consola
                       datosNegocio d = datosNegocio(
                           datos_tiendas[j]['Nombre'],
